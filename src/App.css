@@ -1,0 +1,11 @@
+:root {
+  --red: rgba(214, 79, 54, 1);
+  --yellow: rgba(214, 197, 66, 1);
+  --green: rgba(68, 214, 42, 1);
+  --darkGray: #242424;
+  --white: #efe;
+}
+
+body {
+  background-color: var(--darkGray);
+}
