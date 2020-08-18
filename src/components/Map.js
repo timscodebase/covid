@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, memo } from "react";
 import { geoCentroid } from "d3-geo";
 import {
   ComposableMap,
@@ -24,29 +24,33 @@ const offsets = {
   DC: [49, 21],
 };
 
-export default function Map({ states }) {
-  function handleHover(state) {
-    console.log(state);
-  }
+const Map = ({ data, setTooltipContent }) => {
+  const [states, setStates] = useState(data);
 
   return (
-    <ComposableMap projection="geoAlbersUsa">
+    <ComposableMap data-tip="" projection="geoAlbersUsa">
       <Geographies geography={geoUrl}>
-        {({ geographies }) => (
+        {({ states }) => (
           <>
-            {geographies.map((geo) => (
+            {states.map((state) => (
               <Geography
-                key={geo.rsmKey}
+                key={state.state}
                 stroke="#FFF"
-                geography={geo}
+                geography={state}
                 fill="#DDD"
+                onMouseEnter={() => {
+                  setTooltipContent(`${state.state}`);
+                }}
+                onMouseLeave={() => {
+                  setTooltipContent("");
+                }}
               />
             ))}
-            {geographies.map((geo) => {
-              const centroid = geoCentroid(geo);
-              const cur = states.find((s) => s.val === geo.id);
+            {data.map((state) => {
+              const centroid = geoCentroid(state);
+              const cur = state.find((s) => s.val === state.state);
               return (
-                <g key={geo.rsmKey + "-name"}>
+                <g key={state.state}>
                   {cur &&
                     centroid[0] > -160 &&
                     centroid[0] < -67 &&
@@ -78,4 +82,6 @@ export default function Map({ states }) {
       </Geographies>
     </ComposableMap>
   );
-}
+};
+
+export default memo(Map);

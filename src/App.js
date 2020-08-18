@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // Components
 import DataCard from "./components/DataCard";
@@ -25,13 +25,13 @@ function App() {
   console.log(data);
 
   //TODO (status === "fetched") return <p>Loading...</p>;
-  const cards = data.map((state) => (
-    <DataCard key={state.state} stateData={state} />
-  ));
+  // const cards = data.map((state) => (
+  //   <DataCard key={state.state} stateData={state} />
+  // ));
 
   return (
     <>
-      <Map setTooltipContent={setContent} />
+      <Map setTooltipContent={setContent} data={data} />
       <ReactTooltip>{content}</ReactTooltip>
     </>
   );
