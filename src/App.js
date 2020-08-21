@@ -10,21 +10,28 @@ import './App.css';
 
 const AppLayout = styled.div`
   display: grid;
-  grid-template-columns: 350px auto;
   gap: 1rem;
+  padding: 1rem;
+`;
+
+const Header = styled.header`
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 function App() {
   const [content, setContent] = useState('');
   return (
     <AppLayout>
-      <div>
-        <h1>Hi</h1>
-      </div>
-      <div>
+      <Header>
+        <h1>United States COVID-19 Data</h1>
+      </Header>
+      <>
         <Map setTooltipContent={setContent} />
         <ReactTooltip>{content}</ReactTooltip>
-      </div>
+      </>
     </AppLayout>
   );
 }

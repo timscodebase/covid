@@ -4,6 +4,7 @@
   --green: rgba(68, 214, 42, 1);
   --darkGray: #242424;
   --white: #efe;
+  --white-75: rgba(239, 239, 239, 0.85);
 }
 
 body {
