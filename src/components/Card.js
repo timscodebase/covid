@@ -1,14 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
+import {
+  faVirus,
+  faPrescriptionBottleAlt,
+  faSkullCrossbones,
+  faUserMd
+} from '@fortawesome/free-solid-svg-icons';
+import { faSmileBeam } from '@fortawesome/free-regular-svg-icons';
 
 // Components
 import CardData from './CardData';
 
 const CardStyles = styled.div`
-  padding: 1rem;
+  padding: 0 0.25rem 0.25rem 0.25rem;
   background-color: var(--white);
-  border-radius: 10px 10px 20px 20px;
+  border-radius: 5px;
   border: 4px solid
     ${({ deaths }) => {
       if (deaths >= 60) return 'var(--red)';
@@ -18,14 +26,16 @@ const CardStyles = styled.div`
 
   h2 {
     color: var(--white);
+    margin: 0;
   }
 `;
 
 const Header = styled.header`
-  margin: -1rem;
-  margin-bottom: 2rem;
+  margin: 0 -0.25rem;
+  margin-bottom: 0.5rem;
   padding: 1rem;
-  font-size: 2rem;
+  font-size: 1.8rem;
+  border-radius: 1px 1px 0 0;
   background-color: ${({ deaths }) => {
     if (deaths >= 60) return 'var(--red)';
     if (deaths >= 30) return 'var(--yellow)';
@@ -33,20 +43,27 @@ const Header = styled.header`
   }};
   color: var(--white);
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 
+  .header {
+    margin-left: 1rem;
+  }
+
   p {
+    margin: 0;
     padding-left: 10px;
     font-size: 0.8rem;
-    color: var(--white-75);
+    color: var(--white);
+    font-weight: bold;
   }
 `;
 
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0 0.75rem;
+  gap: 0.25rem;
 
   .lable {
     font-weight: bold;
@@ -78,33 +95,50 @@ export default function DataCard({ stateData }) {
   return (
     <CardStyles deaths={stateData.todayDeaths}>
       <Header deaths={stateData.todayDeaths}>
-        {stateData.state}
+        <h2>
+          <FontAwesomeIcon icon={faVirus} />
+          <span className="header">{stateData.state}</span>
+        </h2>
         <p>{updated}</p>
       </Header>
       <Grid>
-        <CardData>
-          <p className="lable">Recovered:</p>
-          <p>{stateData.recovered.toLocaleString()}</p>
+        <CardData deaths={stateData.todayDeaths} icon={faSmileBeam}>
+          <>
+            <p className="lable">Recovered:</p>
+            <p>{stateData.recovered.toLocaleString()}</p>
+          </>
         </CardData>
-        <CardData>
-          <p className="lable">New Deaths Today:</p>
-          <p>{stateData.todayDeaths.toLocaleString()}</p>
+        <CardData deaths={stateData.todayDeaths} icon={faSkullCrossbones}>
+          <>
+            <p className="lable">New Deaths Today:</p>
+            <p>{stateData.todayDeaths.toLocaleString()}</p>
+          </>
         </CardData>
-        <CardData>
-          <p className="lable">Active Cases:</p>
-          <p>{stateData.active.toLocaleString()}</p>
+        <CardData deaths={stateData.todayDeaths} icon={faPrescriptionBottleAlt}>
+          <>
+            <p className="lable">Active Cases:</p>
+            <p>{stateData.active.toLocaleString()}</p>
+          </>
         </CardData>
-        <CardData>
-          <p className="lable">Total Cases:</p>
-          <p>{stateData.cases.toLocaleString()}</p>
+        <CardData deaths={stateData.todayDeaths} icon={faUserMd}>
+          <>
+            <p className="lable">Total Cases:</p>
+            <p>{stateData.cases.toLocaleString()}</p>
+          </>
         </CardData>
-        <CardData>
-          <p className="lable">Total Deaths:</p>
-          <p>{stateData.deaths.toLocaleString()}</p>
+        <CardData deaths={stateData.todayDeaths} icon={faSkullCrossbones}>
+          <>
+            <p className="lable">Total Deaths:</p>
+            <p>{stateData.deaths.toLocaleString()}</p>
+          </>
         </CardData>
-        <CardData>
-          <p className="lable">Pecentage of Total Deaths over Population:</p>
-          <p>{percent}%</p>
+        <CardData deaths={stateData.todayDeaths} icon={faSmileBeam}>
+          <>
+            <p className="lable">Pecentage of Total Deaths over Population:</p>
+            <p>
+              {stateData.todayDeaths}/{stateData.population}
+            </p>
+          </>
         </CardData>
       </Grid>
     </CardStyles>

@@ -37,6 +37,7 @@ const Wrapper = styled.div`
 
   .map {
     margin-top: -70px;
+    margin-left: 40px;
   }
 `;
 
@@ -45,7 +46,7 @@ const DashBoard = styled.div`
   height: 20vh;
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: 400px 1fr;
 `;
 
 const Map = () => {
@@ -91,6 +92,7 @@ const Map = () => {
               <>
                 {geographies.map((geo) => {
                   let fillColor = handleColor(geo.properties.name);
+                  console.log(fillColor);
                   return (
                     <Geography
                       key={geo.rsmKey}
@@ -113,7 +115,13 @@ const Map = () => {
                             onMouseOver={() => setState(cur.state)}
                             coordinates={centroid}
                           >
-                            <text y="2" fontSize={14} textAnchor="middle">
+                            <text
+                              stroke="transparent"
+                              fill="#efe"
+                              y="2"
+                              fontSize={14}
+                              textAnchor="middle"
+                            >
                               {cur.id}
                             </text>
                           </Marker>
@@ -124,6 +132,9 @@ const Map = () => {
                             dy={offsets[cur.id][1]}
                           >
                             <text
+                              onMouseOver={() => setState(cur.state)}
+                              stroke="transparent"
+                              fill="#efe"
                               x={4}
                               fontSize={14}
                               alignmentBaseline="middle"

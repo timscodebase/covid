@@ -1,7 +1,10 @@
 :root {
   --red: rgba(214, 79, 54, 1);
+  --red-15: rgba(214, 79, 54, 0.15);
   --yellow: rgba(214, 197, 66, 1);
+  --yellow-15: rgba(214, 197, 66, 0.15);
   --green: rgba(68, 214, 42, 1);
+  --green-15: rgba(68, 214, 42, 0.15);
   --darkGray: #242424;
   --white: #efe;
   --white-75: rgba(239, 239, 239, 0.85);
