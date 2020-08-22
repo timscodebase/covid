@@ -81,13 +81,6 @@ export default function DataCard({ stateData }) {
 
   function setDate(date) {
     setUpdated(new Date(parseInt(date)).toString());
-    calPercent();
-  }
-
-  function calPercent() {
-    const percent = stateData.deaths / stateData.population;
-    if (percent < 1) setPercent(0);
-    setPercent(percent);
   }
 
   return (
