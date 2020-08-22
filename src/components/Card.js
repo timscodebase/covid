@@ -19,9 +19,13 @@ const CardStyles = styled.div`
   border-radius: 5px;
   border: 4px solid
     ${({ deaths }) => {
-      if (deaths >= 60) return 'var(--red)';
-      if (deaths >= 30) return 'var(--yellow)';
-      return 'var(--green)';
+      if (deaths >= 60) {
+        return 'var(--red)';
+      } else if (deaths >= 30 && deaths < 60) {
+        return 'var(--yellow)';
+      } else if (deaths < 30) {
+        return 'var(--green)';
+      }
     }};
 
   h2 {
@@ -37,9 +41,13 @@ const Header = styled.header`
   font-size: 1.8rem;
   border-radius: 1px 1px 0 0;
   background-color: ${({ deaths }) => {
-    if (deaths >= 60) return 'var(--red)';
-    if (deaths >= 30) return 'var(--yellow)';
-    return 'var(--green)';
+    if (deaths >= 60) {
+      return 'var(--red)';
+    } else if (deaths >= 30 && deaths < 60) {
+      return 'var(--yellow)';
+    } else if (deaths < 30) {
+      return 'var(--green)';
+    }
   }};
   color: var(--white);
   display: flex;
@@ -85,6 +93,7 @@ export default function DataCard({ stateData }) {
 
   return (
     <CardStyles deaths={stateData.todayDeaths}>
+      {console.log(stateData)}
       <Header deaths={stateData.todayDeaths}>
         <h2>
           <FontAwesomeIcon icon={faVirus} />

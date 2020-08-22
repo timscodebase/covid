@@ -14,6 +14,7 @@ const AppLayout = styled.div`
   display: grid;
   gap: 1rem;
   padding: 1rem;
+  overflow: hidden;
 `;
 
 const Header = styled.header`
@@ -28,7 +29,7 @@ const Corner = styled.a`
   text-decoration: none;
   display: block;
   text-align: center;
-  background-color: #efe;
+  background-color: var(--white-75);
   color: #333;
   font-size: 3.5rem;
   transform: rotate(-45deg);
@@ -39,6 +40,20 @@ const Corner = styled.a`
   width: 100px;
   padding: 4rem 1.5rem;
   height: 200px;
+
+  &:hover {
+    color: #000;
+    background-color: var(--dark-green);
+  }
+
+  p {
+    width: 200px;
+    position: absolute;
+    font-size: 1rem;
+    transform: rotate(90deg);
+    top: 75px;
+    right: -15px;
+  }
 
   svg {
     transform: rotate(45deg);
@@ -57,6 +72,7 @@ function App() {
           rel="noopener noreferer"
         >
           <FontAwesomeIcon icon={faGithub} />
+          <p>Fork me on Github</p>
         </Corner>
       </Header>
       <>
