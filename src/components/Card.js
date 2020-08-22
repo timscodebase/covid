@@ -74,7 +74,6 @@ const Grid = styled.div`
 
 export default function DataCard({ stateData }) {
   const [updated, setUpdated] = useState(null);
-  const [percent, setPercent] = useState(0);
 
   useEffect(() => {
     setDate(stateData.updated);
@@ -87,7 +86,6 @@ export default function DataCard({ stateData }) {
 
   function calPercent() {
     const percent = stateData.deaths / stateData.population;
-    console.log(percent < 0.0001);
     if (percent < 1) setPercent(0);
     setPercent(percent);
   }
