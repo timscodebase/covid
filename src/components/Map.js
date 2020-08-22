@@ -77,6 +77,7 @@ const Map = () => {
   function handleColor(name) {
     let theState = states.find((state) => state.state === name);
     let data = { ...theState };
+    console.log(data.todayDeaths);
     if (data.todayDeaths >= 60) return 'var(--red)';
     if (data.todayDeaths >= 30) return 'var(--yellow)';
     return 'var(--green)';
