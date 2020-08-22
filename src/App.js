@@ -52,7 +52,7 @@ function App() {
       <Header>
         <h1>United States COVID-19 Data</h1>
         <Corner
-          href="https://epic-johnson-f5312f.netlify.app/"
+          href="https://github.com/timscodebase/covid"
           target="_blank"
           rel="noopener noreferer"
         >
