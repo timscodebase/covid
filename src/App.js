@@ -51,7 +51,11 @@ function App() {
     <AppLayout>
       <Header>
         <h1>United States COVID-19 Data</h1>
-        <Corner href="" target="_blank" rel="noopener noreferer">
+        <Corner
+          href="https://epic-johnson-f5312f.netlify.app/"
+          target="_blank"
+          rel="noopener noreferer"
+        >
           <FontAwesomeIcon icon={faGithub} />
         </Corner>
       </Header>
