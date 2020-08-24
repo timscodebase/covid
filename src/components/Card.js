@@ -1,17 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
-import {
-  faVirus,
-  faPrescriptionBottleAlt,
-  faSkullCrossbones,
-  faUserMd
-} from '@fortawesome/free-solid-svg-icons';
-import { faSmileBeam } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faVirus } from '@fortawesome/free-solid-svg-icons';
 
 // Components
-import CardData from './CardData';
+import CardInner from './CardInner';
 
 const CardStyles = styled.div`
   padding: 0 0.25rem 0.25rem 0.25rem;
@@ -31,6 +25,21 @@ const CardStyles = styled.div`
   h2 {
     color: var(--white);
     margin: 0;
+  }
+
+  .slide-enter {
+    opacity: 0;
+  }
+  .slide-enter-active {
+    opacity: 1;
+    transition: opacity 200ms;
+  }
+  .slide-exit {
+    opacity: 1;
+  }
+  .slide-exit-active {
+    opacity: 0;
+    transition: opacity 200ms;
   }
 `;
 
@@ -68,19 +77,7 @@ const Header = styled.header`
   }
 `;
 
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.25rem;
-
-  .lable {
-    font-weight: bold;
-    text-decoration: underline;
-    margin-bottom: 5px;
-  }
-`;
-
-export default function DataCard({ stateData }) {
+export default function DataCard({ hovered, stateData }) {
   const [updated, setUpdated] = useState(null);
 
   useEffect(() => {
@@ -93,7 +90,6 @@ export default function DataCard({ stateData }) {
 
   return (
     <CardStyles deaths={stateData.todayDeaths}>
-      {console.log(stateData)}
       <Header deaths={stateData.todayDeaths}>
         <h2>
           <FontAwesomeIcon icon={faVirus} />
@@ -101,51 +97,13 @@ export default function DataCard({ stateData }) {
         </h2>
         <p>{updated}</p>
       </Header>
-      <Grid>
-        <CardData deaths={stateData.todayDeaths} icon={faSmileBeam}>
-          <>
-            <p className="lable">Recovered:</p>
-            <p>{stateData.recovered.toLocaleString()}</p>
-          </>
-        </CardData>
-        <CardData deaths={stateData.todayDeaths} icon={faSkullCrossbones}>
-          <>
-            <p className="lable">New Deaths Today:</p>
-            <p>{stateData.todayDeaths.toLocaleString()}</p>
-          </>
-        </CardData>
-        <CardData deaths={stateData.todayDeaths} icon={faPrescriptionBottleAlt}>
-          <>
-            <p className="lable">Active Cases:</p>
-            <p>{stateData.active.toLocaleString()}</p>
-          </>
-        </CardData>
-        <CardData deaths={stateData.todayDeaths} icon={faUserMd}>
-          <>
-            <p className="lable">Total Cases:</p>
-            <p>{stateData.cases.toLocaleString()}</p>
-          </>
-        </CardData>
-        <CardData deaths={stateData.todayDeaths} icon={faSkullCrossbones}>
-          <>
-            <p className="lable">Total Deaths:</p>
-            <p>{stateData.deaths.toLocaleString()}</p>
-          </>
-        </CardData>
-        <CardData deaths={stateData.todayDeaths} icon={faSmileBeam}>
-          <>
-            <p className="lable">Pecentage of Total Deaths over Population:</p>
-            <p>
-              {stateData.todayDeaths}/{stateData.population}
-            </p>
-          </>
-        </CardData>
-      </Grid>
+      <CardInner hovered={hovered} stateData={stateData} />
     </CardStyles>
   );
 }
 
 DataCard.propTypes = {
+  hovered: PropTypes.object,
   stateData: PropTypes.shape({
     active: PropTypes.number,
     cases: PropTypes.number,

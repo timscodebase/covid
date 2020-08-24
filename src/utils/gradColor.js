@@ -7,11 +7,11 @@ export default function gradColor(states, name) {
   let data = { ...theState };
   console.log(data.todayDeaths);
   if (data.todayDeaths >= 60) {
-    color = 'var(--red-15)';
+    color = 'var(--red-transparent)';
   } else if (data.todayDeaths >= 30 && data.todayDeaths < 60) {
-    color = 'var(--yellow-15)';
+    color = 'var(--yellow-transparent)';
   } else if (data.todayDeaths < 30) {
-    color = 'var(--green-15)';
+    color = 'var(--green-transparent)';
   }
   console.log(color);
   document.querySelector(':root').style.setProperty('--grad', `${color}`);

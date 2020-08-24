@@ -9,9 +9,9 @@ const CardDataStyles = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${({ deaths }) => {
-    if (deaths >= 60) return 'var(--red-15)';
-    if (deaths >= 30) return 'var(--yellow-15)';
-    return 'var(--green-15)';
+    if (deaths >= 60) return 'var(--red-transparent)';
+    if (deaths >= 30) return 'var(--yellow-transparent)';
+    return 'var(--green-transparent)';
   }};
   border: 2px solid
     ${({ deaths }) => {

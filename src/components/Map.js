@@ -53,7 +53,7 @@ const Map = () => {
   const [state, setState] = useState('Oregon');
   const [states, setStates] = useState([]);
   const [stateData, setData] = useState(undefined);
-  const [gradColor, setGradColor] = useState('var(--green)');
+  const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
     fetchState(state);
@@ -74,23 +74,6 @@ const Map = () => {
     setStates(data);
   }
 
-  // Set the body background overlay color depending on the number COVID related deaths today
-  function handleGradColor(name) {
-    console.log(name);
-    let theState = states.find((state) => state.state === name);
-    let data = { ...theState };
-    console.log(data.todayDeaths);
-    if (data.todayDeaths >= 60) {
-      setGradColor('var(--red-15)');
-    } else if (data.todayDeaths >= 30 && data.todayDeaths < 60) {
-      setGradColor('var(--yellow-15)');
-    } else if (data.todayDeaths < 30) {
-      setGradColor('var(--green-15)');
-    }
-    console.log(gradColor);
-    document.querySelector(':root').style.setProperty('--grad', `${gradColor}`);
-  }
-
   function handleColor(name) {
     let theState = states.find((state) => state.state === name);
     let data = { ...theState };
@@ -105,7 +88,9 @@ const Map = () => {
 
   return (
     <Wrapper>
-      <DashBoard>{stateData ? <Card stateData={stateData} /> : null}</DashBoard>
+      <DashBoard>
+        {stateData ? <Card hovered={hovered} stateData={stateData} /> : null}
+      </DashBoard>
       <div className="map">
         <ComposableMap projection="geoAlbersUsa">
           <Geographies geography={geoUrl}>
@@ -133,9 +118,10 @@ const Map = () => {
                         (Object.keys(offsets).indexOf(cur.id) === -1 ? (
                           <Marker
                             onMouseOver={() => {
-                              handleGradColor(cur.state);
                               setState(cur.state);
+                              setHovered(true);
                             }}
+                            onMouseOut={() => setHovered(false)}
                             coordinates={centroid}
                           >
                             <text
