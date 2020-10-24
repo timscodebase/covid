@@ -1,3 +1,6 @@
+# Covid API App
+[![Open Source Helpers](https://www.codetriage.com/timscodebase/covid/badges/users.svg)](https://www.codetriage.com/timscodebase/covid)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
