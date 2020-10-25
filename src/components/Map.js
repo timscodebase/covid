@@ -39,6 +39,14 @@ const Wrapper = styled.div`
     margin-top: -70px;
     margin-left: 40px;
   }
+
+  @media only screen and (max-width: 992px) {
+    display: block;
+
+    .map {
+      margin-top: 0px;
+    }
+  }
 `;
 
 const DashBoard = styled.div`
@@ -47,6 +55,21 @@ const DashBoard = styled.div`
   display: grid;
   gap: 1rem;
   grid-template-columns: 400px 1fr;
+
+  @media only screen and (max-width: 992px) {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+    width: auto;
+    height: auto;
+  }
+
+  @media only screen and (max-width: 576px) {
+    display: block;
+    margin-left: 5%;
+    max-width: 450px;
+  }
 `;
 
 const Map = () => {
