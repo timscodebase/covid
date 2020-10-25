@@ -11,9 +11,9 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3"
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-scripts": "4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -38,13 +38,12 @@
   },
   "devDependencies": {
     "d3-geo": "^1.12.1",
-    "eslint": "^6.6.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react": "^7.21.5",
     "prettier": "^2.0.5",
     "react-simple-maps": "^2.1.2",
-    "react-tooltip": "^4.2.8",
-    "styled-components": "^5.1.1"
+    "react-tooltip": "^4.2.10",
+    "styled-components": "^5.2.0"
   }
 }

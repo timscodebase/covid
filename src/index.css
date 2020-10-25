@@ -28,7 +28,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(45deg, var(--grad), var(--grad)),
-    url('/covid-19.jpg');
+    url('https://res.cloudinary.com/the-classic-lunchbox/image/upload/f_auto,q_auto/v1603669203/other/covid-19_zwbv8z.jpg');
   background-size: cover;
 }
 
