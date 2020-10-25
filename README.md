@@ -5,6 +5,8 @@ I am using the Covid-19 API from https://disease.sh/ to visually display realtim
 
 This project to both a learning opportunity for me and a service I can do as a dev.
 
+If you are looking to help, look at the [CONTRIBUTING.md](https://github.com/timscodebase/covid/CONTRIBUTING.md)
+
 --- 
 
 ## Build Info
