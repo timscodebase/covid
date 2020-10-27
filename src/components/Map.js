@@ -56,7 +56,7 @@ const DashBoard = styled.div`
   gap: 1rem;
   grid-template-columns: 400px 1fr;
 
-  @media only screen and (max-width: 992px) {
+  @media only screen and (max-width: 1024px) {
     display: flex;
     justify-content: center;
     text-align: center;
